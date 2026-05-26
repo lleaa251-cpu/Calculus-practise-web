@@ -1,0 +1,167 @@
+/* ================================================================
+   win98.css — Windows 98 基礎樣式系統
+   CalcMaster 98 微積分練習系統
+================================================================ */
+
+* { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+
+:root {
+  --win-bg: #008080;
+  --win-gray: #C0C0C0;
+  --win-dark: #808080;
+  --win-darker: #404040;
+  --win-white: #FFFFFF;
+  --win-black: #000000;
+  --win-blue: #000080;
+  --win-blue-light: #1084d0;
+  --win-yellow: #FFFF00;
+  --win-red: #FF0000;
+  --win-green: #008000;
+  --title-bg: linear-gradient(90deg, #000080, #1084d0);
+  --btn-face: #C0C0C0;
+  --font-main: 'MS Sans Serif', 'Tahoma', sans-serif;
+  --font-mono: 'Courier New', monospace;
+}
+
+body {
+  background-color: var(--win-bg);
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 15px, rgba(0,0,0,0.03) 15px, rgba(0,0,0,0.03) 16px),
+    repeating-linear-gradient(90deg, transparent, transparent 15px, rgba(0,0,0,0.03) 15px, rgba(0,0,0,0.03) 16px);
+  font-family: var(--font-main);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── 3D Border System ── */
+.raised {
+  border-top: 2px solid #FFFFFF;
+  border-left: 2px solid #FFFFFF;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+}
+.raised-outer {
+  border-top: 2px solid #DFDFDF;
+  border-left: 2px solid #DFDFDF;
+  border-right: 2px solid #404040;
+  border-bottom: 2px solid #404040;
+}
+.sunken {
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #FFFFFF;
+  border-bottom: 2px solid #FFFFFF;
+}
+.sunken-outer {
+  border-top: 2px solid #404040;
+  border-left: 2px solid #404040;
+  border-right: 2px solid #DFDFDF;
+  border-bottom: 2px solid #DFDFDF;
+}
+
+/* ── Window Chrome ── */
+.window {
+  background: var(--win-gray);
+  position: relative;
+}
+.title-bar {
+  background: var(--title-bg);
+  color: white;
+  padding: 3px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: bold;
+  height: 22px;
+}
+.title-bar-text { display: flex; align-items: center; gap: 5px; }
+.title-bar-controls { display: flex; gap: 2px; }
+
+.win-btn {
+  background: var(--win-gray);
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-main);
+  font-size: 11px;
+  padding: 2px 8px;
+  min-width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.win-btn:active {
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #FFFFFF;
+  border-bottom: 2px solid #FFFFFF;
+}
+.title-btn { width: 18px; height: 18px; min-width: 18px; padding: 0; font-size: 10px; font-weight: bold; }
+.content { padding: 10px; }
+
+/* ── Menu Bar ── */
+.menu-bar {
+  background: var(--win-gray);
+  padding: 2px 4px;
+  display: flex;
+  border-bottom: 1px solid #808080;
+}
+.menu-item { padding: 2px 8px; font-size: 12px; cursor: pointer; }
+.menu-item:hover { background: var(--win-blue); color: white; }
+
+/* ── Tabs ── */
+.tab-bar {
+  display: flex;
+  padding: 8px 8px 0;
+  background: var(--win-gray);
+  border-bottom: 2px solid #808080;
+}
+.tab {
+  padding: 4px 14px;
+  font-size: 12px;
+  cursor: pointer;
+  background: var(--win-gray);
+  margin-bottom: -2px;
+  border-top: 2px solid #FFFFFF;
+  border-left: 2px solid #FFFFFF;
+  border-right: 2px solid #808080;
+  border-bottom: none;
+  position: relative;
+}
+.tab.active { background: #E8E8E8; padding-top: 5px; z-index: 1; border-bottom: 2px solid #E8E8E8; }
+.tab:not(.active):hover { background: #D0D0D0; }
+.tab-panel { display: none; padding: 12px; background: #E8E8E8; min-height: 480px; }
+.tab-panel.active { display: block; }
+
+/* ── Section Title ── */
+.section-title {
+  font-size: 12px;
+  font-weight: bold;
+  background: #000080;
+  color: white;
+  padding: 2px 8px;
+  margin-bottom: 8px;
+}
+
+/* ── Status Bar ── */
+.status-bar {
+  padding: 2px 6px;
+  font-size: 11px;
+  border-top: 2px solid #808080;
+  display: flex;
+  gap: 10px;
+  background: var(--win-gray);
+}
+.status-bar span { border-right: 1px solid #808080; padding-right: 10px; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 16px; height: 16px; }
+::-webkit-scrollbar-track { background: var(--win-gray); }
+::-webkit-scrollbar-thumb {
+  background: #808080;
+  border-top: 1px solid #FFFFFF;
+  border-left: 1px solid #FFFFFF;
+  border-right: 1px solid #404040;
+  border-bottom: 1px solid #404040;
+}
