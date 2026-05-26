@@ -1,0 +1,158 @@
+/* ================================================================
+   layout.css — 桌面、視窗、工具列版面
+   CalcMaster 98 微積分練習系統
+================================================================ */
+
+/* ── Boot Screen ── */
+#screen-boot {
+  position: fixed; inset: 0;
+  background: #000;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  z-index: 9999;
+  color: #C0C0C0;
+  font-family: var(--font-mono);
+}
+#screen-boot .logo-ascii {
+  font-size: 13px;
+  line-height: 1.3;
+  color: #C0C0C0;
+  white-space: pre;
+  text-align: center;
+  margin-bottom: 20px;
+}
+#screen-boot .boot-line {
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  margin: 2px 0;
+  width: 440px;
+}
+#screen-boot .boot-progress-wrap {
+  margin-top: 20px;
+  border: 1px solid #808080;
+  width: 440px;
+  height: 18px;
+  padding: 2px;
+}
+#screen-boot .boot-progress-bar {
+  background: #C0C0C0;
+  height: 100%;
+  width: 0%;
+  transition: width 0.1s;
+}
+#screen-boot .boot-status {
+  margin-top: 8px;
+  font-size: 11px;
+  color: #808080;
+  width: 440px;
+}
+
+/* ── Desktop ── */
+#screen-desktop {
+  min-height: 100vh;
+  padding: 10px;
+  padding-bottom: 50px;
+  display: none;
+}
+
+/* ── Desktop Icons ── */
+.desktop-icons {
+  display: flex; flex-direction: column;
+  flex-wrap: wrap; gap: 15px;
+  max-height: calc(100vh - 80px);
+  padding: 10px;
+}
+.desktop-icon {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 4px;
+  cursor: pointer; width: 80px;
+  padding: 4px;
+}
+.desktop-icon:hover .icon-label { background: var(--win-blue); color: white; }
+.desktop-icon .icon-img { font-size: 36px; line-height: 1; }
+.desktop-icon .icon-label {
+  font-size: 11px; color: white;
+  text-align: center; padding: 1px 2px;
+  text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+  word-break: break-word; line-height: 1.2;
+}
+
+/* ── Main App Window ── */
+#app-window {
+  position: absolute;
+  top: 30px; left: 50%;
+  transform: translateX(-50%);
+  width: 820px;
+  min-height: 560px;
+  display: none;
+}
+#app-window.visible { display: block; }
+
+/* ── Taskbar ── */
+#taskbar {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  height: 38px;
+  background: var(--win-gray);
+  border-top: 2px solid #FFFFFF;
+  display: flex; align-items: center;
+  padding: 0 4px;
+  gap: 6px;
+  z-index: 100;
+}
+#start-btn {
+  height: 30px;
+  padding: 0 10px;
+  font-weight: bold;
+  font-size: 12px;
+  display: flex; align-items: center; gap: 5px;
+  cursor: pointer;
+}
+.taskbar-clock {
+  margin-left: auto;
+  font-size: 11px;
+  padding: 4px 8px;
+  min-width: 80px;
+  text-align: center;
+}
+.taskbar-task {
+  height: 26px; padding: 0 10px;
+  font-size: 11px; cursor: pointer;
+  display: flex; align-items: center; gap: 4px;
+  min-width: 120px; max-width: 160px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.taskbar-task.active-task {
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #FFFFFF;
+  border-bottom: 2px solid #FFFFFF;
+}
+
+/* ── Splash Window ── */
+#splash-window {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  z-index: 200;
+  display: none;
+}
+#splash-window.show { display: block; }
+.splash-logo { text-align: center; padding: 20px; }
+.splash-logo .big-text { font-size: 36px; font-weight: bold; color: var(--win-blue); letter-spacing: 2px; }
+.splash-logo .sub-text { font-size: 13px; color: #404040; margin-top: 4px; }
+.splash-logo .version { font-size: 11px; color: #808080; margin-top: 20px; }
+.splash-progress-wrap { margin: 10px 20px; background: white; height: 16px; }
+.splash-progress { background: var(--win-blue); height: 100%; width: 0; transition: width 0.08s; }
+
+/* ── Popup / Dialog Windows ── */
+.win-dialog {
+  position: fixed;
+  background: var(--win-gray);
+  z-index: 500;
+  display: none;
+  min-width: 320px;
+}
+.win-dialog.show { display: block; }
+.dialog-content { padding: 16px; font-size: 13px; line-height: 1.8; }

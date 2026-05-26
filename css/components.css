@@ -1,0 +1,215 @@
+/* ================================================================
+   components.css — 題目、答題、計分、模式卡片等元件樣式
+   CalcMaster 98 微積分練習系統
+================================================================ */
+
+/* ── Mode Selection Cards ── */
+.mode-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+.mode-card {
+  background: var(--win-gray);
+  padding: 12px;
+  cursor: pointer;
+  text-align: center;
+}
+.mode-card:hover { background: #D8D8D8; }
+.mode-card.selected {
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #FFFFFF;
+  border-bottom: 2px solid #FFFFFF;
+  background: #B8D4FF;
+}
+.mode-card .mode-icon { font-size: 28px; margin-bottom: 6px; }
+.mode-card .mode-name { font-size: 13px; font-weight: bold; margin-bottom: 4px; }
+.mode-card .mode-desc { font-size: 11px; color: #404040; }
+
+/* ── Topic Buttons ── */
+.topic-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 12px; }
+.topic-btn { padding: 8px; font-size: 12px; cursor: pointer; text-align: center; }
+.topic-btn:hover { background: #D0D0D0; }
+.topic-btn.selected {
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #FFFFFF;
+  border-bottom: 2px solid #FFFFFF;
+  background: #FFFFC0;
+  font-weight: bold;
+}
+.topic-badge {
+  display: inline-block;
+  font-size: 10px;
+  padding: 1px 4px;
+  margin-left: 4px;
+  border: 1px solid #808080;
+}
+.topic-badge.easy { background: #90EE90; }
+.topic-badge.med  { background: #FFD700; }
+.topic-badge.hard { background: #FF9999; }
+
+/* ── Difficulty Buttons ── */
+.diff-row { display: flex; gap: 8px; margin-bottom: 10px; }
+.diff-btn { flex: 1; padding: 6px; font-size: 12px; cursor: pointer; text-align: center; }
+.diff-btn.active-diff {
+  border-top: 2px solid #808080; border-left: 2px solid #808080;
+  border-right: 2px solid #FFFFFF; border-bottom: 2px solid #FFFFFF;
+  font-weight: bold;
+}
+.diff-easy.active-diff { background: #90EE90; }
+.diff-med.active-diff  { background: #FFD700; }
+.diff-hard.active-diff { background: #FF9999; }
+
+/* ── Question Box ── */
+.question-box {
+  background: white;
+  padding: 14px;
+  margin-bottom: 12px;
+  min-height: 100px;
+}
+.question-label {
+  font-size: 11px;
+  color: #808080;
+  margin-bottom: 6px;
+  font-family: var(--font-mono);
+}
+.question-text {
+  font-size: 16px;
+  line-height: 1.6;
+  font-family: var(--font-mono);
+  color: #000080;
+  font-weight: bold;
+}
+.question-hint {
+  margin-top: 8px;
+  font-size: 11px;
+  color: #808080;
+  font-style: italic;
+}
+
+/* ── Answer Buttons (Multiple Choice) ── */
+.answer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+.answer-btn {
+  padding: 10px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-mono);
+  background: var(--win-gray);
+}
+.answer-btn:hover:not(:disabled) { background: #D0D0FF; }
+.answer-btn:disabled { cursor: default; }
+.answer-btn.correct {
+  background: #90FF90;
+  border-top: 2px solid #006000; border-left: 2px solid #006000;
+  border-right: 2px solid #90FF90; border-bottom: 2px solid #90FF90;
+}
+.answer-btn.wrong {
+  background: #FF9090;
+  border-top: 2px solid #800000; border-left: 2px solid #800000;
+  border-right: 2px solid #FF9090; border-bottom: 2px solid #FF9090;
+}
+.answer-btn.reveal { background: #FFFFC0; border: 2px dashed #808080; }
+
+/* ── Text Input Answer ── */
+.answer-input-wrap { display: flex; gap: 8px; margin-bottom: 12px; }
+.answer-input {
+  flex: 1; padding: 6px 8px;
+  font-size: 14px;
+  font-family: var(--font-mono);
+  background: white;
+  border: none;
+}
+.answer-input:focus { outline: 2px solid #000080; }
+
+/* ── Result Bar ── */
+.result-bar {
+  padding: 8px 12px;
+  font-size: 13px;
+  margin-bottom: 10px;
+  display: none;
+  font-family: var(--font-mono);
+}
+.result-bar.show { display: block; }
+.result-bar.ok   { background: #90FF90; border: 2px solid #006000; }
+.result-bar.fail { background: #FF9090; border: 2px solid #800000; }
+
+/* ── Explanation Box ── */
+.explanation-box {
+  background: #FFFFC0;
+  border: 2px solid #808000;
+  padding: 10px;
+  font-size: 12px;
+  line-height: 1.7;
+  font-family: var(--font-mono);
+  display: none;
+  margin-bottom: 10px;
+}
+.explanation-box.show { display: block; }
+
+/* ── Progress Bar ── */
+.progress-wrap {
+  background: white;
+  height: 14px;
+  margin-bottom: 8px;
+  position: relative;
+  overflow: hidden;
+}
+.progress-bar-inner {
+  background: var(--win-blue);
+  height: 100%;
+  transition: width 0.3s;
+}
+.progress-label {
+  position: absolute; top: 0; left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px; color: white;
+  font-weight: bold; line-height: 14px;
+  mix-blend-mode: difference;
+  white-space: nowrap;
+}
+
+/* ── Stats Row ── */
+.stats-row { display: flex; gap: 8px; margin-bottom: 10px; font-size: 11px; }
+.stat-box {
+  flex: 1; background: var(--win-gray);
+  padding: 6px 8px; text-align: center;
+}
+.stat-box .stat-val { font-size: 18px; font-weight: bold; color: #000080; }
+.stat-box .stat-lbl { font-size: 10px; color: #404040; }
+
+/* ── Score / End Screen ── */
+.score-screen { text-align: center; padding: 20px; display: none; }
+.score-screen.show { display: block; }
+.score-big   { font-size: 64px; font-weight: bold; color: #000080; margin: 10px 0; }
+.score-grade { font-size: 28px; margin-bottom: 16px; }
+.score-detail { font-size: 13px; font-family: var(--font-mono); line-height: 2; }
+.trophy { font-size: 60px; }
+
+/* ── Timer (Challenge Mode) ── */
+#timer-display {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: bold;
+  color: #000080;
+  text-align: center;
+  padding: 4px;
+  background: #C0C0C0;
+  letter-spacing: 2px;
+}
+#timer-display.warn { color: #CC0000; animation: blink 0.5s infinite; }
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+/* ── Daily Panel Header ── */
+.daily-header {
+  background: var(--win-blue);
+  color: white;
+  padding: 8px 12px;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+.daily-streak { font-size: 11px; color: #AADFFF; }
+
+/* ── Streak Counter ── */
+.streak-counter { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; font-weight: bold; }
