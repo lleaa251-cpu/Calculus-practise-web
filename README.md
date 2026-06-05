@@ -123,6 +123,3 @@ Calculus-practise-web/
 - [ ] 挑戰模式排行榜
 - [ ] 音效（Win98 風格提示音）
 
----
-
-*Copyright © 2024 lleaa251-cpu*
